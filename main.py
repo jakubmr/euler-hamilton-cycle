@@ -73,11 +73,21 @@ def setSaturation(t, n):
                         if saturation(t) > n:
                             break
 
-t = cycleGraph(50)
-print(isEuler(t))
-setSaturation(t, 30)
+def changeTops(t, n, m):
+    t1 = t[:]
+    for i in t1:
+        i[n], i[m] = i[m], i[n]
+    # column1 = [i[n] for i in t]
+    # column2 = [i[m] for i in t]
+    return t1
+
+t = cycleGraph(10)
+setSaturation(t, 70)
 
 for i in t:
     print(i, i.count(1))
 
 print(f'{saturation(t)}%, is Euler: {isEuler(t)}')
+test = changeTops(t, 0, 1)
+for i in test:
+    print(i, i.count(1))
